@@ -6,6 +6,12 @@ const canvas = document.getElementById('starCanvas');
 const ctx = canvas.getContext('2d');
 const navbar = document.querySelector('.navbar');
 const navProgress = document.querySelector('.nav-progress');
+const navToggle = document.querySelector('.nav-toggle');
+const navLinksList = document.getElementById('navLinks');
+const navScrim = document.querySelector('.nav-scrim');
+const scrollContainer = document.querySelector('.scroll-container');
+const aliensSection = document.getElementById('aliens');
+const aliensBg = document.querySelector('.aliens-bg');
 
 let stars = [];
 let particles = [];
@@ -14,6 +20,34 @@ let mouseX = 0;
 let mouseY = 0;
 let cursorX = 0;
 let cursorY = 0;
+let bgParticles = [];
+let aliensBgEnabled = false;
+
+// ==================== RESPONSIVE SCROLL LENGTH ====================
+function setScrollLength() {
+    if (!scrollContainer) return;
+    const totalScenes = 1 + cards.length; // hero + each card
+    scrollContainer.style.height = (totalScenes * 100) + 'vh';
+}
+
+// ==================== MOBILE NAV ====================
+function setMenuOpen(open) {
+    if (!navbar || !navToggle) return;
+    navbar.classList.toggle('menu-open', open);
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+
+    if (navScrim) {
+        navScrim.hidden = !open;
+        navScrim.style.pointerEvents = open ? 'auto' : 'none';
+    }
+
+    document.body.style.overflow = open ? 'hidden' : '';
+}
+
+function toggleMenu() {
+    const open = !navbar.classList.contains('menu-open');
+    setMenuOpen(open);
+}
 
 // ==================== STARFIELD ENGINE ====================
 function initStars() {
@@ -30,6 +64,24 @@ function initStars() {
         pulseSpeed: 0.01 + Math.random() * 0.02,
         pulsePhase: Math.random() * Math.PI * 2
     }));
+
+    const baseCount = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4 ? 40 : 85;
+    bgParticles = Array.from({ length: baseCount }, () => {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const size = Math.random() * 2 + 0.6;
+        const opacity = Math.random() * 0.35 + 0.08;
+        return {
+            x,
+            y,
+            vx: (Math.random() - 0.5) * 0.18,
+            vy: (Math.random() - 0.5) * 0.12,
+            size,
+            o: opacity,
+            phase: Math.random() * Math.PI * 2,
+            pulse: 0.008 + Math.random() * 0.02
+        };
+    });
 }
 
 function animateStars() {
@@ -66,6 +118,33 @@ function animateStars() {
         if (s.y < 0) s.y = canvas.height;
         if (s.y > canvas.height) s.y = 0;
     });
+
+    if (aliensBgEnabled && bgParticles.length) {
+        bgParticles.forEach(p => {
+            p.phase += p.pulse;
+            const pulse = 0.55 + (Math.sin(p.phase) + 1) * 0.225;
+
+            p.x += p.vx;
+            p.y += p.vy;
+
+            if (p.x < -50) p.x = canvas.width + 50;
+            if (p.x > canvas.width + 50) p.x = -50;
+            if (p.y < -50) p.y = canvas.height + 50;
+            if (p.y > canvas.height + 50) p.y = -50;
+
+            const a = Math.max(0, Math.min(1, p.o * pulse));
+
+            ctx.fillStyle = '#ff2a2a' + Math.floor(a * 255).toString(16).padStart(2, '0');
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.fillStyle = '#ff2a2a' + Math.floor(a * 80).toString(16).padStart(2, '0');
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size * 3.2, 0, Math.PI * 2);
+            ctx.fill();
+        });
+    }
     
     requestAnimationFrame(animateStars);
 }
@@ -121,6 +200,14 @@ function updateOnScroll() {
     const scrollPos = window.scrollY;
     const vh = window.innerHeight;
     const maxScroll = document.documentElement.scrollHeight - vh;
+
+    // Toggle omni background for aliens section
+    if (aliensSection && aliensBg) {
+        const aliensTop = aliensSection.getBoundingClientRect().top;
+        const shouldEnable = aliensTop <= vh * 0.25;
+        aliensBg.classList.toggle('on', shouldEnable);
+        aliensBgEnabled = shouldEnable;
+    }
     
     // Update navbar
     if (scrollPos > 50) {
@@ -185,6 +272,29 @@ window.addEventListener('scroll', () => {
         ticking = true;
     }
 });
+
+// Escape closes mobile menu
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navbar && navbar.classList.contains('menu-open')) {
+        setMenuOpen(false);
+    }
+});
+
+// Close menu on navigation
+if (navToggle) {
+    navToggle.addEventListener('click', toggleMenu);
+}
+
+if (navScrim) {
+    navScrim.addEventListener('click', () => setMenuOpen(false));
+}
+
+if (navLinksList) {
+    navLinksList.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (a) setMenuOpen(false);
+    });
+}
 
 // ==================== MOUSE TRACKING ====================
 document.addEventListener('mousemove', (e) => {
@@ -355,14 +465,22 @@ cards.forEach(card => observer.observe(card));
 // ==================== SMOOTH SCROLL ====================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#') return;
+
+        const target = document.querySelector(href);
+        if (!target) return;
+
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+
+        const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const navOffset = navbar ? navbar.offsetHeight + 10 : 90;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - navOffset;
+
+        window.scrollTo({
+            top,
+            behavior: reduceMotion ? 'auto' : 'smooth'
+        });
     });
 });
 
@@ -374,6 +492,7 @@ function animate() {
 
 // ==================== INITIALIZATION ====================
 function init() {
+    setScrollLength();
     initStars();
     animateStars();
     animateCursorFollower();
@@ -395,6 +514,7 @@ let resizeTimeout;
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
+        setScrollLength();
         initStars();
     }, 250);
 });

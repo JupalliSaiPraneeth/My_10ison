@@ -13,6 +13,7 @@
     <div class="custom-cursor"></div>
     <div class="cursor-follower"></div>
     <canvas id="starCanvas"></canvas>
+    <div class="aliens-bg" aria-hidden="true"></div>
     
     <div class="particle-container"></div>
 
@@ -21,11 +22,17 @@
             <span class="logo-icon">⬡</span>
             OMNITRIX<span class="logo-subtitle">DATABASE</span>
         </div>
-        <ul class="nav-links">
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+        </button>
+        <ul id="navLinks" class="nav-links">
             <li><a href="#hero" class="nav-link-item">HOME</a></li>
             <li><a href="#aliens" class="nav-link-item">ALIENS</a></li>
-            <li><a href="https://github.com/jupallisaipraneeth540" target="_blank" class="nav-link-item">PORTFOLIO</a></li>
+            <li><a href="https://jupallisaipraneeth.github.io/Responsive_portfolio/" target="_blank" class="nav-link-item">PORTFOLIO</a></li>
         </ul>
+        <div class="nav-scrim" hidden></div>
         <div class="nav-progress"></div>
     </nav>
 
@@ -231,7 +238,7 @@
                     <div class="photo-col">
                         <div class="action-aura cyan-aura"></div>
                         <div class="energy-rings"></div>
-                        <img src="images/bc.jpg" class="character-layer ice-pulse" alt="Big Chill">
+                        <img src="images/bc-removebg-preview.png" class="character-layer ice-pulse" alt="Big Chill">
                     </div>
                     <div class="desc-col">
                         <div class="desc-content">
