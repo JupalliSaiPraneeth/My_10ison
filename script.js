@@ -580,3 +580,60 @@ document.addEventListener('keydown', (e) => {
         console.log('🎮 Omnitrix activated! All aliens unlocked!');
     }
 });
+// ==================== FOOTER TYPING EFFECT ====================
+const footerTypingMessages = [
+    "All Systems Online ✓",
+    "Omnitrix Database Active ⬡",
+    "24 Heroes Ready for Action 🚀",
+    "Protecting Earth from Alien Threats 🌍",
+    "It's Hero Time! ⚡"
+];
+
+let currentMessageIndex = 0;
+let currentCharIndex = 0;
+let isDeleting = false;
+let typingSpeed = 100;
+
+function typeFooterText() {
+    const typingElement = document.getElementById('footerTyping');
+    if (!typingElement) return;
+    
+    const currentMessage = footerTypingMessages[currentMessageIndex];
+    
+    if (isDeleting) {
+        typingElement.textContent = currentMessage.substring(0, currentCharIndex - 1);
+        currentCharIndex--;
+        typingSpeed = 50;
+    } else {
+        typingElement.textContent = currentMessage.substring(0, currentCharIndex + 1);
+        currentCharIndex++;
+        typingSpeed = 100;
+    }
+    
+    if (!isDeleting && currentCharIndex === currentMessage.length) {
+        // Pause at end
+        typingSpeed = 2000;
+        isDeleting = true;
+    } else if (isDeleting && currentCharIndex === 0) {
+        isDeleting = false;
+        currentMessageIndex = (currentMessageIndex + 1) % footerTypingMessages.length;
+        typingSpeed = 500;
+    }
+    
+    setTimeout(typeFooterText, typingSpeed);
+}
+
+// Start typing effect when footer is visible
+const footerObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            typeFooterText();
+            footerObserver.disconnect();
+        }
+    });
+}, { threshold: 0.3 });
+
+const footer = document.querySelector('.site-footer');
+if (footer) {
+    footerObserver.observe(footer);
+}

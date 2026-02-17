@@ -14,13 +14,12 @@
     <div class="cursor-follower"></div>
     <canvas id="starCanvas"></canvas>
     <div class="aliens-bg" aria-hidden="true"></div>
-    
     <div class="particle-container"></div>
 
     <nav class="navbar">
         <div class="nav-logo">
             <span class="logo-icon">⬡</span>
-            OMNITRIX<span class="logo-subtitle">DATABASE</span>
+            OMNITRIX DATABASE<span class="logo-subtitle"></span>
         </div>
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
             <span class="nav-toggle-bar"></span>
@@ -36,14 +35,8 @@
         <div class="nav-progress"></div>
     </nav>
 
-    <svg style="position: absolute; width: 0; height: 0;">
+    <svg style="position:absolute;width:0;height:0;">
         <defs>
-            <filter id="thermal-distortion">
-                <feTurbulence type="turbulence" baseFrequency="0.02 0.05" numOctaves="2" result="wave">
-                    <animate attributeName="baseFrequency" values="0.02 0.05; 0.02 0.1; 0.02 0.05" dur="4s" repeatCount="indefinite"/>
-                </feTurbulence>
-                <feDisplacementMap in="SourceGraphic" in2="wave" scale="12" />
-            </filter>
             <filter id="chromatic-shift">
                 <feOffset in="SourceGraphic" dx="3" dy="0" result="red"/>
                 <feOffset in="SourceGraphic" dx="-3" dy="0" result="blue"/>
@@ -53,11 +46,11 @@
     </svg>
 
     <div class="scroll-container">
+        <!-- HERO -->
         <section id="hero" class="hero-section">
             <div class="hero-overlay"></div>
             <div class="hero-vignette"></div>
             <img src="images/all-remove-removebg-preview.png" class="main-poster" alt="Ben 10 All Aliens">
-            
             <div class="hero-info">
                 <div class="hero-badge">ORIGINAL SERIES</div>
                 <h1 class="netflix-title">
@@ -68,27 +61,20 @@
                 <p class="netflix-desc">When 10-year-old Ben Tennyson discovers a mysterious alien device, he gains the power to transform into the universe's most powerful heroes.</p>
                 <div class="hero-meta">
                     <span class="meta-item">⭐ 9.2/10</span>
-                    <span class="meta-item">11 Aliens</span>
+                    <span class="meta-item">24 Heroes</span>
                     <span class="meta-item">2005-2008</span>
                 </div>
                 <div class="hero-btns">
                     <button class="btn-play">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                         Play
                     </button>
                     <button class="btn-info">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="12" y1="16" x2="12" y2="12"/>
-                            <line x1="12" y1="8" x2="12.01" y2="8"/>
-                        </svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
                         More Info
                     </button>
                 </div>
             </div>
-            
             <div class="scroll-indicator">
                 <div class="scroll-icon"></div>
                 <span>Scroll to explore</span>
@@ -96,70 +82,49 @@
         </section>
 
         <main id="aliens" class="scene">
+
             <!-- 1. Four Arms -->
             <section class="character-card layout-left" data-color="#D21F3C" data-name="FOUR ARMS">
                 <div class="grid-layout">
                     <div class="photo-col">
                         <div class="action-aura red-aura"></div>
                         <div class="energy-rings"></div>
-                        <img src="images/f-removebg-preview.png" class="character-layer action-shake" alt="Four Arms">
+                        <img src="images/fourarms-removebg-preview.png" class="character-layer action-shake" alt="Four Arms">
                     </div>
-                    <div class="desc-col">
-                        <div class="desc-content">
-                            <div class="alien-badge">TETRAMAND</div>
-                            <h1 class="bg-title">FOUR ARMS</h1>
-                            <h2 class="alien-name">FOUR ARMS</h2>
-                            <h3 class="power-title">SUPERHUMAN STRENGTH</h3>
-                            <p class="power-desc">Tetramand physiology allows for unmatched physical force. His leaps cover miles, and his shockwaves level battlefields.</p>
-                            <div class="power-stats">
-                                <div class="stat-item">
-                                    <span class="stat-label">Strength</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 95%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Speed</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 70%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Durability</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 85%"></div></div>
-                                </div>
-                            </div>
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">TETRAMAND</div>
+                        <h1 class="bg-title">FOUR ARMS</h1>
+                        <h2 class="alien-name">FOUR ARMS</h2>
+                        <h3 class="power-title">SUPERHUMAN STRENGTH</h3>
+                        <p class="power-desc">Tetramand physiology allows for unmatched physical force. His leaps cover miles, and his shockwaves level battlefields.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Strength</span><div class="stat-bar"><div class="stat-fill" style="width:95%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Speed</span><div class="stat-bar"><div class="stat-fill" style="width:70%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Durability</span><div class="stat-bar"><div class="stat-fill" style="width:85%"></div></div></div>
                         </div>
-                    </div>
+                    </div></div>
                 </div>
             </section>
 
             <!-- 2. Heatblast -->
             <section class="character-card layout-right" data-color="#FF4500" data-name="HEATBLAST">
                 <div class="grid-layout">
-                    <div class="desc-col">
-                        <div class="desc-content">
-                            <div class="alien-badge">PYRONITE</div>
-                            <h1 class="bg-title">HEATBLAST</h1>
-                            <h2 class="alien-name">HEATBLAST</h2>
-                            <h3 class="power-title">PYROKINESIS</h3>
-                            <p class="power-desc">A living supernova. He manipulates thermal energy to create blasts reaching temperatures of a solar flare.</p>
-                            <div class="power-stats">
-                                <div class="stat-item">
-                                    <span class="stat-label">Fire Power</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 98%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Control</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 80%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Flight</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 75%"></div></div>
-                                </div>
-                            </div>
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">PYRONITE</div>
+                        <h1 class="bg-title">HEATBLAST</h1>
+                        <h2 class="alien-name">HEATBLAST</h2>
+                        <h3 class="power-title">PYROKINESIS</h3>
+                        <p class="power-desc">A living supernova. He manipulates thermal energy to create blasts reaching temperatures of a solar flare.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Fire Power</span><div class="stat-bar"><div class="stat-fill" style="width:98%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Control</span><div class="stat-bar"><div class="stat-fill" style="width:80%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Flight</span><div class="stat-bar"><div class="stat-fill" style="width:75%"></div></div></div>
                         </div>
-                    </div>
+                    </div></div>
                     <div class="photo-col">
                         <div class="action-aura orange-aura"></div>
                         <div class="energy-rings"></div>
-                        <img src="images/fi-removebg-preview.png" class="character-layer thermal-pulse" alt="Heatblast">
+                        <img src="images/newhb.png" class="character-layer heatblast-idle" alt="Heatblast">
                     </div>
                 </div>
             </section>
@@ -172,62 +137,40 @@
                         <div class="energy-rings"></div>
                         <img src="images/alienx-removebg-preview.png" class="character-layer reality-glitch" alt="Alien X">
                     </div>
-                    <div class="desc-col">
-                        <div class="desc-content">
-                            <div class="alien-badge">CELESTIALSAPIEN</div>
-                            <h1 class="bg-title">ALIEN X</h1>
-                            <h2 class="alien-name">ALIEN X</h2>
-                            <h3 class="power-title">OMNIPOTENCE</h3>
-                            <p class="power-desc">Control over the fabric of existence itself. Every thought becomes reality, guarded by the voices of Bellicus and Serena.</p>
-                            <div class="power-stats">
-                                <div class="stat-item">
-                                    <span class="stat-label">Reality Control</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 100%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Cosmic Power</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 100%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Invulnerability</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 100%"></div></div>
-                                </div>
-                            </div>
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">CELESTIALSAPIEN</div>
+                        <h1 class="bg-title">ALIEN X</h1>
+                        <h2 class="alien-name">ALIEN X</h2>
+                        <h3 class="power-title">OMNIPOTENCE</h3>
+                        <p class="power-desc">Control over the fabric of existence itself. Every thought becomes reality, guarded by the voices of Bellicus and Serena.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Reality Control</span><div class="stat-bar"><div class="stat-fill" style="width:100%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Cosmic Power</span><div class="stat-bar"><div class="stat-fill" style="width:100%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Invulnerability</span><div class="stat-bar"><div class="stat-fill" style="width:100%"></div></div></div>
                         </div>
-                    </div>
+                    </div></div>
                 </div>
             </section>
 
             <!-- 4. Cannonbolt -->
             <section class="character-card layout-right" data-color="#FFD700" data-name="CANNONBOLT">
                 <div class="grid-layout">
-                    <div class="desc-col">
-                        <div class="desc-content">
-                            <div class="alien-badge">ARBURIAN PELAROTA</div>
-                            <h1 class="bg-title">CANNONBOLT</h1>
-                            <h2 class="alien-name">CANNONBOLT</h2>
-                            <h3 class="power-title">SPHEROID FORM</h3>
-                            <p class="power-desc">Rolls into an indestructible sphere capable of demolishing anything in his path. His armored shell deflects energy and projectiles.</p>
-                            <div class="power-stats">
-                                <div class="stat-item">
-                                    <span class="stat-label">Defense</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 92%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Momentum</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 88%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Impact Force</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 90%"></div></div>
-                                </div>
-                            </div>
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">ARBURIAN PELAROTA</div>
+                        <h1 class="bg-title">CANNONBOLT</h1>
+                        <h2 class="alien-name">CANNONBOLT</h2>
+                        <h3 class="power-title">SPHEROID FORM</h3>
+                        <p class="power-desc">Rolls into an indestructible sphere capable of demolishing anything in his path. His armored shell deflects energy and projectiles.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Defense</span><div class="stat-bar"><div class="stat-fill" style="width:92%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Momentum</span><div class="stat-bar"><div class="stat-fill" style="width:88%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Impact Force</span><div class="stat-bar"><div class="stat-fill" style="width:90%"></div></div></div>
                         </div>
-                    </div>
+                    </div></div>
                     <div class="photo-col">
                         <div class="action-aura yellow-aura"></div>
                         <div class="energy-rings"></div>
-                        <img src="images/186561120297404-removebg-preview.png" class="character-layer spin-effect" alt="Cannonbolt">
+                        <img src="images/cannon.png" class="character-layer spin-effect" alt="Cannonbolt">
                     </div>
                 </div>
             </section>
@@ -238,64 +181,42 @@
                     <div class="photo-col">
                         <div class="action-aura cyan-aura"></div>
                         <div class="energy-rings"></div>
-                        <img src="images/bc-removebg-preview.png" class="character-layer ice-pulse" alt="Big Chill">
+                        <img src="images/big-chill.png" class="character-layer ice-pulse" alt="Big Chill">
                     </div>
-                    <div class="desc-col">
-                        <div class="desc-content">
-                            <div class="alien-badge">NECROFRIGGIAN</div>
-                            <h1 class="bg-title">BIG CHILL</h1>
-                            <h2 class="alien-name">BIG CHILL</h2>
-                            <h3 class="power-title">CRYOKINESIS</h3>
-                            <p class="power-desc">A phantom-like entity that breathes ice and phases through solid matter. His freezing breath can reach absolute zero temperatures.</p>
-                            <div class="power-stats">
-                                <div class="stat-item">
-                                    <span class="stat-label">Ice Power</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 94%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Intangibility</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 96%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Flight</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 85%"></div></div>
-                                </div>
-                            </div>
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">NECROFRIGGIAN</div>
+                        <h1 class="bg-title">BIG CHILL</h1>
+                        <h2 class="alien-name">BIG CHILL</h2>
+                        <h3 class="power-title">CRYOKINESIS</h3>
+                        <p class="power-desc">A phantom-like entity that breathes ice and phases through solid matter. His freezing breath can reach absolute zero temperatures.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Ice Power</span><div class="stat-bar"><div class="stat-fill" style="width:94%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Intangibility</span><div class="stat-bar"><div class="stat-fill" style="width:96%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Flight</span><div class="stat-bar"><div class="stat-fill" style="width:85%"></div></div></div>
                         </div>
-                    </div>
+                    </div></div>
                 </div>
             </section>
 
             <!-- 6. Diamondhead -->
             <section class="character-card layout-right" data-color="#00FFAA" data-name="DIAMONDHEAD">
                 <div class="grid-layout">
-                    <div class="desc-col">
-                        <div class="desc-content">
-                            <div class="alien-badge">PETROSAPIEN</div>
-                            <h1 class="bg-title">DIAMONDHEAD</h1>
-                            <h2 class="alien-name">DIAMONDHEAD</h2>
-                            <h3 class="power-title">CRYSTALLOKINESIS</h3>
-                            <p class="power-desc">Made of ultra-hard diamond crystal. Can manipulate, create, and project crystal shards at will with devastating precision.</p>
-                            <div class="power-stats">
-                                <div class="stat-item">
-                                    <span class="stat-label">Durability</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 97%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Crystal Power</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 90%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Refraction</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 88%"></div></div>
-                                </div>
-                            </div>
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">PETROSAPIEN</div>
+                        <h1 class="bg-title">DIAMONDHEAD</h1>
+                        <h2 class="alien-name">DIAMONDHEAD</h2>
+                        <h3 class="power-title">CRYSTALLOKINESIS</h3>
+                        <p class="power-desc">Made of ultra-hard diamond crystal. Can manipulate, create, and project crystal shards at will with devastating precision.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Durability</span><div class="stat-bar"><div class="stat-fill" style="width:97%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Crystal Power</span><div class="stat-bar"><div class="stat-fill" style="width:90%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Refraction</span><div class="stat-bar"><div class="stat-fill" style="width:88%"></div></div></div>
                         </div>
-                    </div>
+                    </div></div>
                     <div class="photo-col">
                         <div class="action-aura emerald-aura"></div>
                         <div class="energy-rings"></div>
-                        <img src="images/dh-removebg-preview.png" class="character-layer crystal-shine" alt="Diamondhead">
+                        <img src="images/newdh.png" class="character-layer crystal-shine" alt="Diamondhead">
                     </div>
                 </div>
             </section>
@@ -306,64 +227,42 @@
                     <div class="photo-col">
                         <div class="action-aura brown-aura"></div>
                         <div class="energy-rings"></div>
-                        <img src="images/hu-removebg-preview.png" class="character-layer stomp-shake" alt="Humungousaur">
+                        <img src="images/newhuman.png" class="character-layer stomp-shake" alt="Humungousaur">
                     </div>
-                    <div class="desc-col">
-                        <div class="desc-content">
-                            <div class="alien-badge">VAXASAURIAN</div>
-                            <h1 class="bg-title">HUMUNGOUSAUR</h1>
-                            <h2 class="alien-name">HUMUNGOUSAUR</h2>
-                            <h3 class="power-title">SIZE MANIPULATION</h3>
-                            <p class="power-desc">A massive dinosaur-like alien with incredible strength that increases as he grows. Can reach up to 60 feet in height.</p>
-                            <div class="power-stats">
-                                <div class="stat-item">
-                                    <span class="stat-label">Strength</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 99%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Size</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 95%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Durability</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 92%"></div></div>
-                                </div>
-                            </div>
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">VAXASAURIAN</div>
+                        <h1 class="bg-title">HUMUNGOUSAUR</h1>
+                        <h2 class="alien-name">HUMUNGOUSAUR</h2>
+                        <h3 class="power-title">SIZE MANIPULATION</h3>
+                        <p class="power-desc">A massive dinosaur-like alien with incredible strength that increases as he grows. Can reach up to 60 feet in height.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Strength</span><div class="stat-bar"><div class="stat-fill" style="width:99%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Size</span><div class="stat-bar"><div class="stat-fill" style="width:95%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Durability</span><div class="stat-bar"><div class="stat-fill" style="width:92%"></div></div></div>
                         </div>
-                    </div>
+                    </div></div>
                 </div>
             </section>
 
             <!-- 8. XLR8 -->
             <section class="character-card layout-right" data-color="#00CCFF" data-name="XLR8">
                 <div class="grid-layout">
-                    <div class="desc-col">
-                        <div class="desc-content">
-                            <div class="alien-badge">KINECELERAN</div>
-                            <h1 class="bg-title">XLR8</h1>
-                            <h2 class="alien-name">XLR8</h2>
-                            <h3 class="power-title">SUPER SPEED</h3>
-                            <p class="power-desc">Moves at speeds exceeding 500 mph. His velocity allows him to run on water, up walls, and create devastating cyclones.</p>
-                            <div class="power-stats">
-                                <div class="stat-item">
-                                    <span class="stat-label">Speed</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 100%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Agility</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 96%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Reflexes</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 98%"></div></div>
-                                </div>
-                            </div>
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">KINECELERAN</div>
+                        <h1 class="bg-title">XLR8</h1>
+                        <h2 class="alien-name">XLR8</h2>
+                        <h3 class="power-title">SUPER SPEED</h3>
+                        <p class="power-desc">Moves at speeds exceeding 500 mph. His velocity allows him to run on water, up walls, and create devastating cyclones.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Speed</span><div class="stat-bar"><div class="stat-fill" style="width:100%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Agility</span><div class="stat-bar"><div class="stat-fill" style="width:96%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Reflexes</span><div class="stat-bar"><div class="stat-fill" style="width:98%"></div></div></div>
                         </div>
-                    </div>
+                    </div></div>
                     <div class="photo-col">
                         <div class="action-aura speed-aura"></div>
                         <div class="energy-rings"></div>
-                        <img src="images/xlr.png" class="character-layer speed-blur" alt="XLR8">
+                        <img src="images/xlr888.png" class="character-layer speed-blur size-sm" alt="XLR8">
                     </div>
                 </div>
             </section>
@@ -374,60 +273,38 @@
                     <div class="photo-col">
                         <div class="action-aura cosmic-aura"></div>
                         <div class="energy-rings"></div>
-                        <img src="images/way-big.png" class="character-layer titan-pulse" alt="Way Big">
+                        <img src="images/waybig-removebg.png" class="character-layer titan-pulse size-sm" alt="Way Big">
                     </div>
-                    <div class="desc-col">
-                        <div class="desc-content">
-                            <div class="alien-badge">TO'KUSTAR</div>
-                            <h1 class="bg-title">WAY BIG</h1>
-                            <h2 class="alien-name">WAY BIG</h2>
-                            <h3 class="power-title">COSMIC GIANT</h3>
-                            <p class="power-desc">Standing at over 100 feet tall, this cosmic giant can fire devastating energy beams from his arms and possesses planet-shaking strength.</p>
-                            <div class="power-stats">
-                                <div class="stat-item">
-                                    <span class="stat-label">Size</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 100%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Cosmic Ray</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 97%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Strength</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 100%"></div></div>
-                                </div>
-                            </div>
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">TO'KUSTAR</div>
+                        <h1 class="bg-title">WAY BIG</h1>
+                        <h2 class="alien-name">WAY BIG</h2>
+                        <h3 class="power-title">COSMIC GIANT</h3>
+                        <p class="power-desc">Standing at over 100 feet tall, this cosmic giant can fire devastating energy beams from his arms and possesses planet-shaking strength.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Size</span><div class="stat-bar"><div class="stat-fill" style="width:100%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Cosmic Ray</span><div class="stat-bar"><div class="stat-fill" style="width:97%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Strength</span><div class="stat-bar"><div class="stat-fill" style="width:100%"></div></div></div>
                         </div>
-                    </div>
+                    </div></div>
                 </div>
             </section>
 
             <!-- 10. Upgrade -->
             <section class="character-card layout-right" data-color="#00FF00" data-name="UPGRADE">
                 <div class="grid-layout">
-                    <div class="desc-col">
-                        <div class="desc-content">
-                            <div class="alien-badge">GALVANIC MECHAMORPH</div>
-                            <h1 class="bg-title">UPGRADE</h1>
-                            <h2 class="alien-name">UPGRADE</h2>
-                            <h3 class="power-title">TECHNOKINESIS</h3>
-                            <p class="power-desc">A living liquid metal that merges with and enhances any technology. Can upgrade devices far beyond their original capabilities.</p>
-                            <div class="power-stats">
-                                <div class="stat-item">
-                                    <span class="stat-label">Tech Merge</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 100%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Enhancement</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 95%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Adaptability</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 93%"></div></div>
-                                </div>
-                            </div>
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">GALVANIC MECHAMORPH</div>
+                        <h1 class="bg-title">UPGRADE</h1>
+                        <h2 class="alien-name">UPGRADE</h2>
+                        <h3 class="power-title">TECHNOKINESIS</h3>
+                        <p class="power-desc">A living liquid metal that merges with and enhances any technology. Can upgrade devices far beyond their original capabilities.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Tech Merge</span><div class="stat-bar"><div class="stat-fill" style="width:100%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Enhancement</span><div class="stat-bar"><div class="stat-fill" style="width:95%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Adaptability</span><div class="stat-bar"><div class="stat-fill" style="width:93%"></div></div></div>
                         </div>
-                    </div>
+                    </div></div>
                     <div class="photo-col">
                         <div class="action-aura tech-aura"></div>
                         <div class="energy-rings"></div>
@@ -442,36 +319,362 @@
                     <div class="photo-col">
                         <div class="action-aura monkey-aura"></div>
                         <div class="energy-rings"></div>
-                        <img src="images/spidermonkey.webp" class="character-layer swing-motion" alt="Spidermonkey">
+                        <img src="images/spidermonkey.webp" class="character-layer swing-motion size-sm" alt="Spidermonkey">
                     </div>
-                    <div class="desc-col">
-                        <div class="desc-content">
-                            <div class="alien-badge">ARACHNICHIMP</div>
-                            <h1 class="bg-title">SPIDERMONKEY</h1>
-                            <h2 class="alien-name">SPIDERMONKEY</h2>
-                            <h3 class="power-title">WEB GENERATION</h3>
-                            <p class="power-desc">Combines simian agility with arachnid abilities. Shoots ultra-strong webs from his tail and possesses enhanced strength and dexterity.</p>
-                            <div class="power-stats">
-                                <div class="stat-item">
-                                    <span class="stat-label">Agility</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 94%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Web Power</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 90%"></div></div>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-label">Dexterity</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 92%"></div></div>
-                                </div>
-                            </div>
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">ARACHNICHIMP</div>
+                        <h1 class="bg-title">SPIDERMONKEY</h1>
+                        <h2 class="alien-name">SPIDERMONKEY</h2>
+                        <h3 class="power-title">WEB GENERATION</h3>
+                        <p class="power-desc">Combines simian agility with arachnid abilities. Shoots ultra-strong webs from his tail and possesses enhanced strength and dexterity.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Agility</span><div class="stat-bar"><div class="stat-fill" style="width:94%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Web Power</span><div class="stat-bar"><div class="stat-fill" style="width:90%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Dexterity</span><div class="stat-bar"><div class="stat-fill" style="width:92%"></div></div></div>
                         </div>
+                    </div></div>
+                </div>
+            </section>
+
+            <!-- 12. Wildmutt -->
+            <section class="character-card layout-right" data-color="#FF6600" data-name="WILDMUTT">
+                <div class="grid-layout">
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">VULPIMANCER</div>
+                        <h1 class="bg-title">WILDMUTT</h1>
+                        <h2 class="alien-name">WILDMUTT</h2>
+                        <h3 class="power-title">PRIMAL INSTINCTS</h3>
+                        <p class="power-desc">A quadrupedal beast with no eyes but hypersensitive quills that act as sensory organs. Tracks anything by scent alone with deadly accuracy.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Speed</span><div class="stat-bar"><div class="stat-fill" style="width:91%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Tracking</span><div class="stat-bar"><div class="stat-fill" style="width:98%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Strength</span><div class="stat-bar"><div class="stat-fill" style="width:82%"></div></div></div>
+                        </div>
+                    </div></div>
+                    <div class="photo-col">
+                        <div class="action-aura orange2-aura"></div>
+                        <div class="energy-rings"></div>
+                        <img src="images/wildmutt.png" class="character-layer beast-prowl" alt="Wildmutt">
                     </div>
                 </div>
             </section>
+
+            <!-- 13. Stinkfly -->
+            <section class="character-card layout-left" data-color="#9ACD32" data-name="STINKFLY">
+                <div class="grid-layout">
+                    <div class="photo-col">
+                        <div class="action-aura lime-aura"></div>
+                        <div class="energy-rings"></div>
+                        <img src="images/stingfly removebg.png" class="character-layer fly-hover" alt="Stinkfly">
+                    </div>
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">LEPIDOPTERRAN</div>
+                        <h1 class="bg-title">STINKFLY</h1>
+                        <h2 class="alien-name">STINKFLY</h2>
+                        <h3 class="power-title">AERIAL ASSAULT</h3>
+                        <p class="power-desc">Fast-flying insectoid alien that shoots corrosive slime and flammable gas from his eyes and mouth. Incredibly agile in the air.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Flight Speed</span><div class="stat-bar"><div class="stat-fill" style="width:90%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Slime Power</span><div class="stat-bar"><div class="stat-fill" style="width:85%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Agility</span><div class="stat-bar"><div class="stat-fill" style="width:88%"></div></div></div>
+                        </div>
+                    </div></div>
+                </div>
+            </section>
+
+            <!-- 14. Ripjaws -->
+            <section class="character-card layout-right" data-color="#2E8B57" data-name="RIPJAWS">
+                <div class="grid-layout">
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">PISCCISS VOLANN</div>
+                        <h1 class="bg-title">RIPJAWS</h1>
+                        <h2 class="alien-name">RIPJAWS</h2>
+                        <h3 class="power-title">AQUATIC PREDATOR</h3>
+                        <p class="power-desc">A fearsome underwater predator with razor-sharp teeth strong enough to bite through steel. Transforms between bipedal and aquatic forms.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Bite Force</span><div class="stat-bar"><div class="stat-fill" style="width:96%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Swim Speed</span><div class="stat-bar"><div class="stat-fill" style="width:93%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Strength</span><div class="stat-bar"><div class="stat-fill" style="width:86%"></div></div></div>
+                        </div>
+                    </div></div>
+                    <div class="photo-col">
+                        <div class="action-aura sea-aura"></div>
+                        <div class="energy-rings"></div>
+                        <img src="images/rip_jaws-removebg-preview.png" class="character-layer jaw-snap" alt="Ripjaws">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 15. Ghostfreak -->
+            <section class="character-card layout-left" data-color="#B0B0C8" data-name="GHOSTFREAK">
+                <div class="grid-layout">
+                    <div class="photo-col">
+                        <div class="action-aura ghost-aura"></div>
+                        <div class="energy-rings"></div>
+                        <img src="images/ghost.png" class="character-layer phantom-float" alt="Ghostfreak">
+                    </div>
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">ECTONURITE</div>
+                        <h1 class="bg-title">GHOSTFREAK</h1>
+                        <h2 class="alien-name">GHOSTFREAK</h2>
+                        <h3 class="power-title">INTANGIBILITY</h3>
+                        <p class="power-desc">A terrifying ghost-like alien that can phase through matter, become invisible, and possess other beings. His single eye sees through all illusions.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Intangibility</span><div class="stat-bar"><div class="stat-fill" style="width:100%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Possession</span><div class="stat-bar"><div class="stat-fill" style="width:92%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Invisibility</span><div class="stat-bar"><div class="stat-fill" style="width:95%"></div></div></div>
+                        </div>
+                    </div></div>
+                </div>
+            </section>
+
+            <!-- 16. Goop -->
+            <section class="character-card layout-right" data-color="#7FFF00" data-name="GOOP">
+                <div class="grid-layout">
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">POLYMORPH</div>
+                        <h1 class="bg-title">GOOP</h1>
+                        <h2 class="alien-name">GOOP</h2>
+                        <h3 class="power-title">SHAPESHIFTING</h3>
+                        <p class="power-desc">An amorphous alien made of a self-replicating green slime. Can take any shape and secrete powerful acids from his body.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Shapeshifting</span><div class="stat-bar"><div class="stat-fill" style="width:100%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Acid Power</span><div class="stat-bar"><div class="stat-fill" style="width:88%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Elasticity</span><div class="stat-bar"><div class="stat-fill" style="width:95%"></div></div></div>
+                        </div>
+                    </div></div>
+                    <div class="photo-col">
+                        <div class="action-aura slime-aura"></div>
+                        <div class="energy-rings"></div>
+                        <img src="images/gel.png" class="character-layer goop-morph" alt="Goop">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 17. Swampfire / Lava -->
+            <section class="character-card layout-left" data-color="#8B0000" data-name="SWAMPFIRE">
+                <div class="grid-layout">
+                    <div class="photo-col">
+                        <div class="action-aura lava-aura"></div>
+                        <div class="energy-rings"></div>
+                        <img src="images/lava.png" class="character-layer lava-burn" alt="Swampfire">
+                    </div>
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">METHANOSIAN</div>
+                        <h1 class="bg-title">SWAMPFIRE</h1>
+                        <h2 class="alien-name">SWAMPFIRE</h2>
+                        <h3 class="power-title">PYRO-BOTANY</h3>
+                        <p class="power-desc">A plant-fire hybrid that shoots explosive fireballs and can regenerate from any injury. Commands vines and combustible gas with terrifying power.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Fire Control</span><div class="stat-bar"><div class="stat-fill" style="width:92%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Regeneration</span><div class="stat-bar"><div class="stat-fill" style="width:97%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Plant Power</span><div class="stat-bar"><div class="stat-fill" style="width:89%"></div></div></div>
+                        </div>
+                    </div></div>
+                </div>
+            </section>
+
+            <!-- 18. Brainstorm -->
+            <section class="character-card layout-right" data-color="#FFD700" data-name="BRAINSTORM">
+                <div class="grid-layout">
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">CEREBROCRUSTACEAN</div>
+                        <h1 class="bg-title">BRAINSTORM</h1>
+                        <h2 class="alien-name">BRAINSTORM</h2>
+                        <h3 class="power-title">ELECTROKINESIS</h3>
+                        <p class="power-desc">A genius crustacean who opens his skull to project devastating electrical blasts. His intellect surpasses any supercomputer ever built.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Intelligence</span><div class="stat-bar"><div class="stat-fill" style="width:100%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Electric Power</span><div class="stat-bar"><div class="stat-fill" style="width:93%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Force Field</span><div class="stat-bar"><div class="stat-fill" style="width:87%"></div></div></div>
+                        </div>
+                    </div></div>
+                    <div class="photo-col">
+                        <div class="action-aura electric-aura"></div>
+                        <div class="energy-rings"></div>
+                        <img src="images/brain-removebg-preview.png" class="character-layer brain-spark" alt="Brainstorm">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 19. Blitzwolfer -->
+            <section class="character-card layout-left" data-color="#808080" data-name="BLITZWOLFER">
+                <div class="grid-layout">
+                    <div class="photo-col">
+                        <div class="action-aura silver-aura"></div>
+                        <div class="energy-rings"></div>
+                        <img src="images/pluto-removebg-preview.png" class="character-layer wolf-howl" alt="Blitzwolfer">
+                    </div>
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">LOBOAN</div>
+                        <h1 class="bg-title">BLITZWOLFER</h1>
+                        <h2 class="alien-name">BLITZWOLFER</h2>
+                        <h3 class="power-title">SONIC HOWL</h3>
+                        <p class="power-desc">A powerful werewolf-like alien capable of unleashing a destructive ultrasonic howl. His claws can slash through almost any material.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Sonic Howl</span><div class="stat-bar"><div class="stat-fill" style="width:94%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Strength</span><div class="stat-bar"><div class="stat-fill" style="width:87%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Agility</span><div class="stat-bar"><div class="stat-fill" style="width:90%"></div></div></div>
+                        </div>
+                    </div></div>
+                </div>
+            </section>
+
+            <!-- 20. Eye Guy / Wind -->
+            <section class="character-card layout-right" data-color="#00CED1" data-name="EYE GUY">
+                <div class="grid-layout">
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">OPTICOID</div>
+                        <h1 class="bg-title">EYE GUY</h1>
+                        <h2 class="alien-name">EYE GUY</h2>
+                        <h3 class="power-title">MULTI-VISION BLASTS</h3>
+                        <p class="power-desc">Covered in eyes that can fire energy beams, freeze targets, or ignite fires. All eyes merge into one massive beam of unstoppable force.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Energy Blasts</span><div class="stat-bar"><div class="stat-fill" style="width:91%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Multi-Target</span><div class="stat-bar"><div class="stat-fill" style="width:96%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Perception</span><div class="stat-bar"><div class="stat-fill" style="width:99%"></div></div></div>
+                        </div>
+                    </div></div>
+                    <div class="photo-col">
+                        <div class="action-aura teal-aura"></div>
+                        <div class="energy-rings"></div>
+                        <img src="images/wind.png" class="character-layer wind-spin" alt="Eye Guy">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 21. Benvicktor / Build -->
+            <section class="character-card layout-left" data-color="#DAA520" data-name="BENVICKTOR">
+                <div class="grid-layout">
+                    <div class="photo-col">
+                        <div class="action-aura gold-aura"></div>
+                        <div class="energy-rings"></div>
+                        <img src="images/build.png" class="character-layer mech-stomp" alt="Benvicktor">
+                    </div>
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">TRANSYLIAN</div>
+                        <h1 class="bg-title">BENVICKTOR</h1>
+                        <h2 class="alien-name">BENVICKTOR</h2>
+                        <h3 class="power-title">ELECTROMAGNETIC POWER</h3>
+                        <p class="power-desc">A massive Transylian warrior with powerful electromagnetic abilities and immense physical strength, built like a living tank with unstoppable force.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Strength</span><div class="stat-bar"><div class="stat-fill" style="width:95%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">EM Power</span><div class="stat-bar"><div class="stat-fill" style="width:89%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Durability</span><div class="stat-bar"><div class="stat-fill" style="width:93%"></div></div></div>
+                        </div>
+                    </div></div>
+                </div>
+            </section>
+
+            <!-- 12. Gwen -->
+            <section class="character-card layout-right" data-color="#FF1493" data-name="GWEN">
+                <div class="grid-layout">
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">ANODITE HYBRID</div>
+                        <h1 class="bg-title">GWEN</h1>
+                        <h2 class="alien-name">GWEN</h2>
+                        <h3 class="power-title">MANA MANIPULATION</h3>
+                        <p class="power-desc">Ben's cousin with powerful magical abilities. Gwen can generate energy constructs, cast spells, and tap into the mystical Anodite powers inherited from her grandmother.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Magic Power</span><div class="stat-bar"><div class="stat-fill" style="width:96%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Intelligence</span><div class="stat-bar"><div class="stat-fill" style="width:98%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Energy Control</span><div class="stat-bar"><div class="stat-fill" style="width:94%"></div></div></div>
+                        </div>
+                    </div></div>
+                    <div class="photo-col">
+                        <div class="action-aura pink-aura"></div>
+                        <div class="energy-rings"></div>
+                        <img src="images/gevn-removebg-preview.png" class="character-layer mana-flow" alt="Gwen">
+                    </div>
+                </div>
+            </section>
+
+            <!-- 23. Kevin 11 -->
+            <section class="character-card layout-left" data-color="#6A0DAD" data-name="KEVIN 11">
+                <div class="grid-layout">
+                    <div class="photo-col">
+                        <div class="action-aura purple-aura"></div>
+                        <div class="energy-rings"></div>
+                        <img src="images/kevin-removebg-preview.png" class="character-layer dark-pulse size-sm" alt="Kevin 11">
+                    </div>
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">HUMAN MUTANT</div>
+                        <h1 class="bg-title">KEVIN 11</h1>
+                        <h2 class="alien-name">KEVIN 11</h2>
+                        <h3 class="power-title">POWER ABSORPTION</h3>
+                        <p class="power-desc">Ben's rival who can absorb energy and matter. Initially a villain, Kevin became a powerful ally with the ability to transform his body into various materials.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Matter Absorption</span><div class="stat-bar"><div class="stat-fill" style="width:92%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Combat</span><div class="stat-bar"><div class="stat-fill" style="width:88%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Durability</span><div class="stat-bar"><div class="stat-fill" style="width:85%"></div></div></div>
+                        </div>
+                    </div></div>
+                </div>
+            </section>
+
+            <!-- 24. Grandpa Max -->
+            <section class="character-card layout-right" data-color="#DC143C" data-name="GRANDPA MAX">
+                <div class="grid-layout">
+                    <div class="desc-col"><div class="desc-content">
+                        <div class="alien-badge">PLUMBER VETERAN</div>
+                        <h1 class="bg-title">GRANDPA MAX</h1>
+                        <h2 class="alien-name">GRANDPA MAX</h2>
+                        <h3 class="power-title">TACTICAL EXPERTISE</h3>
+                        <p class="power-desc">Former Plumber and mentor to Ben. Max Tennyson's decades of experience fighting alien threats makes him an invaluable guide and protector.</p>
+                        <div class="power-stats">
+                            <div class="stat-item"><span class="stat-label">Experience</span><div class="stat-bar"><div class="stat-fill" style="width:100%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Leadership</span><div class="stat-bar"><div class="stat-fill" style="width:95%"></div></div></div>
+                            <div class="stat-item"><span class="stat-label">Combat Skills</span><div class="stat-bar"><div class="stat-fill" style="width:88%"></div></div></div>
+                        </div>
+                    </div></div>
+                    <div class="photo-col">
+                        <div class="action-aura crimson-aura"></div>
+                        <div class="energy-rings"></div>
+                        <img src="images/newmax.png" class="character-layer wise-stance" alt="Grandpa Max">
+                    </div>
+                </div>
+            </section>
+
         </main>
     </div>
 
     <script src="script.js"></script>
+
+    <!-- Professional Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="footer-icon">⬡</span>
+                    <span class="footer-title">OMNITRIX DATABASE</span>
+                </div>
+                <div class="footer-typing">
+                    <span class="typing-label">Status:</span>
+                    <span class="typing-text" id="footerTyping"></span>
+                    <span class="typing-cursor">|</span>
+                </div>
+                <div class="footer-credits">
+                    <p class="credit-text">
+                        <span class="credit-icon">⚡</span>
+                        Developed by
+                        <a href="https://jupallisaipraneeth.github.io/Responsive_portfolio/" target="_blank" class="credit-link">Jupalli Sai Praneeth</a>
+                    </p>
+                    <p class="credit-subtext">Crafted with passion for Ben 10 fans worldwide</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/JupalliSaiPraneeth" target="_blank" class="social-link" aria-label="GitHub">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://jupallisaipraneeth.github.io/Responsive_portfolio/" target="_blank" class="social-link" aria-label="Portfolio">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                    </a>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2024 Omnitrix Database. Ben 10 is a registered trademark of Cartoon Network.</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-particles" aria-hidden="true"></div>
+    </footer>
 </body>
 </html>
