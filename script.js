@@ -54,7 +54,8 @@ function initStars() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     
-    stars = Array.from({length: 300}, () => ({
+    const starCount = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4 ? 150 : 250;
+    stars = Array.from({length: starCount}, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         size: Math.random() * 2.5,
@@ -192,24 +193,35 @@ function animateParticles() {
     });
 }
 
-// ==================== SCROLL HANDLING ====================
-let lastScrollY = 0;
-let ticking = false;
+// ==================== SMOOTH SCROLL OPTIMIZATIONS ====================
 
-function updateOnScroll() {
+// Debounced scroll with RAF
+let scrollRAF = null;
+let lastScrollY = 0;
+let isScrolling = false;
+
+function smoothUpdateOnScroll() {
     const scrollPos = window.scrollY;
     const vh = window.innerHeight;
     const maxScroll = document.documentElement.scrollHeight - vh;
+    
+    // Only update if scroll changed significantly
+    if (Math.abs(scrollPos - lastScrollY) < 1) {
+        isScrolling = false;
+        return;
+    }
 
-    // Toggle omni background for aliens section
+    // Toggle omni background
     if (aliensSection && aliensBg) {
         const aliensTop = aliensSection.getBoundingClientRect().top;
         const shouldEnable = aliensTop <= vh * 0.25;
-        aliensBg.classList.toggle('on', shouldEnable);
-        aliensBgEnabled = shouldEnable;
+        if (aliensBgEnabled !== shouldEnable) {
+            aliensBg.classList.toggle('on', shouldEnable);
+            aliensBgEnabled = shouldEnable;
+        }
     }
     
-    // Update navbar
+    // Update navbar (throttled)
     if (scrollPos > 50) {
         navbar.classList.add('scrolled');
     } else {
@@ -217,61 +229,59 @@ function updateOnScroll() {
     }
     
     // Update progress bar
-    const progress = (scrollPos / maxScroll) * 100;
-    navProgress.style.width = progress + '%';
+    navProgress.style.width = ((scrollPos / maxScroll) * 100) + '%';
     
-    // Handle character cards
+    // Handle character cards with smooth transition
     const cardIndex = Math.floor((scrollPos - vh) / vh);
     
     cards.forEach((card, i) => {
-        if (i === cardIndex) {
-            if (!card.classList.contains('active')) {
+        const shouldBeActive = i === cardIndex;
+        const isActive = card.classList.contains('active');
+        
+        if (shouldBeActive && !isActive) {
+            // Activate card
+            requestAnimationFrame(() => {
                 card.classList.add('active');
                 currentColor = card.dataset.color;
                 document.documentElement.style.setProperty('--primary', currentColor);
                 
-                // Create particle burst on card activation
+                // Reduced particle burst for performance
                 const rect = card.getBoundingClientRect();
                 createParticleBurst(
                     rect.left + rect.width / 2,
                     rect.top + rect.height / 2,
                     currentColor,
-                    30
+                    20 // Reduced from 30
                 );
-            }
-        } else {
-            card.classList.remove('active');
+            });
+        } else if (!shouldBeActive && isActive) {
+            // Deactivate card
+            requestAnimationFrame(() => {
+                card.classList.remove('active');
+            });
         }
     });
     
-    // Smooth parallax for active card
-    const activeCard = document.querySelector('.character-card.active');
-    if (activeCard) {
-        const cardProgress = ((scrollPos - vh) % vh) / vh;
-        const scale = 1 + cardProgress * 0.02;
-        
-        const char = activeCard.querySelector('.character-layer');
-        const bgTitle = activeCard.querySelector('.bg-title');
-        
-        if (char) {
-            const baseTransform = char.style.transform || '';
-            // Keep existing mouse parallax, add scroll effect
-            if (!baseTransform.includes('translate')) {
-                char.style.transform = `scale(${scale})`;
-            }
-        }
-    }
-    
     lastScrollY = scrollPos;
-    ticking = false;
+    isScrolling = false;
 }
 
+// Optimized scroll listener with RAF
 window.addEventListener('scroll', () => {
-    if (!ticking) {
-        window.requestAnimationFrame(updateOnScroll);
-        ticking = true;
+    if (!isScrolling) {
+        isScrolling = true;
+        if (scrollRAF) cancelAnimationFrame(scrollRAF);
+        scrollRAF = requestAnimationFrame(smoothUpdateOnScroll);
     }
-});
+}, { passive: true });
+
+// Replace old updateOnScroll calls
+function updateOnScroll() {
+    smoothUpdateOnScroll();
+}
+
+
+
 
 // Escape closes mobile menu
 document.addEventListener('keydown', (e) => {
@@ -297,43 +307,52 @@ if (navLinksList) {
 }
 
 // ==================== MOUSE TRACKING ====================
+// Throttled mouse tracking for performance
+let mouseRAF = null;
 document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
     
-    // Update cursor position
+    // Update cursor position immediately (lightweight)
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
     
-    // Calculate parallax values
-    const x = (e.clientX / window.innerWidth - 0.5) * 2;
-    const y = (e.clientY / window.innerHeight - 0.5) * 2;
+    // Throttle parallax updates with RAF
+    if (mouseRAF) return;
+    
+    mouseRAF = requestAnimationFrame(() => {
+        // Calculate parallax values
+        const x = (mouseX / window.innerWidth - 0.5) * 2;
+        const y = (mouseY / window.innerHeight - 0.5) * 2;
 
-    // Apply parallax to active card
-    const activeCard = document.querySelector('.character-card.active');
-    if (activeCard) {
-        const char = activeCard.querySelector('.character-layer');
-        const bgTitle = activeCard.querySelector('.bg-title');
-        const aura = activeCard.querySelector('.action-aura');
-        const rings = activeCard.querySelector('.energy-rings');
-        
-        if (char) {
-            char.style.transform = `translate(${x * 30}px, ${y * 15}px) scale(1.02)`;
+        // Apply parallax to active card
+        const activeCard = document.querySelector('.character-card.active');
+        if (activeCard) {
+            const char = activeCard.querySelector('.character-layer');
+            const bgTitle = activeCard.querySelector('.bg-title');
+            const aura = activeCard.querySelector('.action-aura');
+            const rings = activeCard.querySelector('.energy-rings');
+            
+            if (char) {
+                char.style.transform = `translate(${x * 30}px, ${y * 15}px) scale(1.02)`;
+            }
+            
+            if (bgTitle) {
+                bgTitle.style.transform = `translate(${x * -60}px, ${y * -30}px)`;
+            }
+            
+            if (aura) {
+                aura.style.transform = `translate(-50%, -50%) translate(${x * 20}px, ${y * 20}px)`;
+            }
+            
+            if (rings) {
+                rings.style.transform = `translate(-50%, -50%) translate(${x * 15}px, ${y * 15}px)`;
+            }
         }
         
-        if (bgTitle) {
-            bgTitle.style.transform = `translate(${x * -60}px, ${y * -30}px)`;
-        }
-        
-        if (aura) {
-            aura.style.transform = `translate(-50%, -50%) translate(${x * 20}px, ${y * 20}px)`;
-        }
-        
-        if (rings) {
-            rings.style.transform = `translate(-50%, -50%) translate(${x * 15}px, ${y * 15}px)`;
-        }
-    }
-});
+        mouseRAF = null;
+    });
+}, { passive: true });
 
 // ==================== CURSOR FOLLOWER ====================
 function animateCursorFollower() {
