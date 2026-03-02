@@ -12,6 +12,8 @@ const navScrim = document.querySelector('.nav-scrim');
 const scrollContainer = document.querySelector('.scroll-container');
 const aliensSection = document.getElementById('aliens');
 const aliensBg = document.querySelector('.aliens-bg');
+const heroSection = document.getElementById('hero');
+const heroSpotlight = document.querySelector('.hero-spotlight');
 
 let stars = [];
 let particles = [];
@@ -22,6 +24,14 @@ let cursorX = 0;
 let cursorY = 0;
 let bgParticles = [];
 let aliensBgEnabled = false;
+
+let spotX = 0;
+let spotY = 0;
+let targetSpotX = 0;
+let targetSpotY = 0;
+let spotlightActive = false;
+const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const canHover = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
 // ==================== RESPONSIVE SCROLL LENGTH ====================
 function setScrollLength() {
@@ -325,6 +335,15 @@ document.addEventListener('mousemove', (e) => {
         const x = (mouseX / window.innerWidth - 0.5) * 2;
         const y = (mouseY / window.innerHeight - 0.5) * 2;
 
+        // Spotlight target position (in hero-section coordinate space)
+        if (heroSection && heroSpotlight && spotlightActive) {
+            const rect = heroSection.getBoundingClientRect();
+            const localX = Math.max(0, Math.min(rect.width, mouseX - rect.left));
+            const localY = Math.max(0, Math.min(rect.height, mouseY - rect.top));
+            targetSpotX = rect.width ? (localX / rect.width) : 0.5;
+            targetSpotY = rect.height ? (localY / rect.height) : 0.5;
+        }
+
         // Apply parallax to active card
         const activeCard = document.querySelector('.character-card.active');
         if (activeCard) {
@@ -364,8 +383,39 @@ function animateCursorFollower() {
     
     cursorFollower.style.left = cursorX + 'px';
     cursorFollower.style.top = cursorY + 'px';
+
+    if (heroSpotlight && heroSection && spotlightActive) {
+        const ease = reduceMotion ? 1 : 0.12;
+        spotX += (targetSpotX - spotX) * ease;
+        spotY += (targetSpotY - spotY) * ease;
+        heroSpotlight.style.setProperty('--spot-x', (spotX * 100) + '%');
+        heroSpotlight.style.setProperty('--spot-y', (spotY * 100) + '%');
+    }
     
     requestAnimationFrame(animateCursorFollower);
+}
+
+// ==================== HERO SPOTLIGHT ====================
+if (heroSection && heroSpotlight && canHover && !reduceMotion) {
+    heroSection.addEventListener('mouseenter', () => {
+        spotlightActive = true;
+        heroSpotlight.style.setProperty('--spot-opacity', '1');
+
+        const rect = heroSection.getBoundingClientRect();
+        const localX = Math.max(0, Math.min(rect.width, mouseX - rect.left));
+        const localY = Math.max(0, Math.min(rect.height, mouseY - rect.top));
+        targetSpotX = rect.width ? (localX / rect.width) : 0.5;
+        targetSpotY = rect.height ? (localY / rect.height) : 0.5;
+        spotX = targetSpotX;
+        spotY = targetSpotY;
+        heroSpotlight.style.setProperty('--spot-x', (spotX * 100) + '%');
+        heroSpotlight.style.setProperty('--spot-y', (spotY * 100) + '%');
+    });
+
+    heroSection.addEventListener('mouseleave', () => {
+        spotlightActive = false;
+        heroSpotlight.style.setProperty('--spot-opacity', '0');
+    });
 }
 
 // ==================== BUTTON INTERACTIONS ====================
